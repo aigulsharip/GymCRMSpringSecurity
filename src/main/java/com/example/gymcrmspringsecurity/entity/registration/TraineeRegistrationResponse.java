@@ -1,0 +1,14 @@
+package com.example.gymcrmspringsecurity.entity.registration;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class TraineeRegistrationResponse {
+    private String username;
+    private String password;
+}
+
