@@ -166,17 +166,10 @@ public class TraineeService {
         List<Trainer> trainers = trainerRepository.findByUsernameIn(trainerUsernames);
         trainee.setTrainers(trainers);
         traineeRepository.save(trainee);
-        return trainers.stream()
-                .map(this::mapToTrainerProfileResponse)
-                .collect(Collectors.toList());
+        return trainers.stream().map(this::mapToTrainerProfileResponse).collect(Collectors.toList());
     }
 
     TrainerInfo mapToTrainerProfileResponse(Trainer trainer) {
-        return new TrainerInfo(
-                trainer.getUsername(),
-                trainer.getFirstName(),
-                trainer.getLastName(),
-                trainer.getTrainingType()
-        );
+        return new TrainerInfo(trainer.getUsername(), trainer.getFirstName(), trainer.getLastName(), trainer.getTrainingType());
     }
 }

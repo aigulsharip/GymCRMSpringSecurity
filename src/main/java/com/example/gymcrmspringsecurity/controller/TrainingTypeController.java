@@ -28,7 +28,7 @@ public class TrainingTypeController {
     @Operation(summary = "Get all training types\", notes = \"Retrieve a list of all available training types.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved the list of training types"),
-            @ApiResponse(code = 500, message = "Internal server error") })
+            @ApiResponse(code = 500, message = "Internal server error")})
     public ResponseEntity<List<TrainingTypeResponse>> getTrainingTypes() {
         log.info("Received request to get all training types");
         List<TrainingTypeResponse> trainingTypes = trainingTypeService.getAllTrainingTypesList();

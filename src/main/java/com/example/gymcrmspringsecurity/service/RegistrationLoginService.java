@@ -29,7 +29,7 @@ public class RegistrationLoginService {
         this.trainerRepository = trainerRepository;
     }
 
-    public TraineeRegistrationResponse registerTrainee (TraineeRegistrationRequest traineeRegistrationRequest) {
+    public TraineeRegistrationResponse registerTrainee(TraineeRegistrationRequest traineeRegistrationRequest) {
         log.info("Registering trainee: {}", traineeRegistrationRequest);
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -42,7 +42,7 @@ public class RegistrationLoginService {
         return modelMapper.map(trainee, TraineeRegistrationResponse.class);
     }
 
-    public TrainerRegistrationResponse registerTrainer (TrainerRegistrationRequest trainerRegistrationRequest) {
+    public TrainerRegistrationResponse registerTrainer(TrainerRegistrationRequest trainerRegistrationRequest) {
         log.info("Registering trainer: {}", trainerRegistrationRequest);
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -90,37 +90,6 @@ public class RegistrationLoginService {
         }
         return sb.toString();
     }
-    /*
-    // Register trainee logic without modelMapper:25 lines of code
-    public TraineeRegistrationResponse registerTrainee(TraineeRegistrationRequest request) {
-        // Create Trainee entity from request
-        Trainee trainee = new Trainee();
-        trainee.setFirstName(request.getFirstName());
-        trainee.setLastName(request.getLastName());
-        trainee.setDateOfBirth(request.getDateOfBirth());
-        trainee.setAddress(request.getAddress());
-        trainee.setIsActive(true);
-        trainee.setPassword("password");
-        trainee.setUsername("username");
-
-        // Save trainee to the database
-        trainee = traineeRepository.save(trainee);
-
-        // Generate username and password
-        String username = calculateUsername(trainee.getFirstName(), trainee.getLastName());
-        String password = generatePassword();
-
-        // Update trainee with username and password
-        trainee.setUsername(username);
-        trainee.setPassword(password);
-        traineeRepository.save(trainee);
-
-        // Create registration response
-        return new TraineeRegistrationResponse(username, password);
-    }
-
-     */
-
 }
 
 

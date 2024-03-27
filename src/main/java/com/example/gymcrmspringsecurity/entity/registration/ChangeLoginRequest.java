@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 
-
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -22,4 +21,5 @@ public class ChangeLoginRequest {
 
     @NotBlank(message = "New password is required")
     @Size(min = 6, max = 20, message = "Password must be between 6 and 20 characters")
-    private String newPassword;}
+    private String newPassword;
+}
