@@ -1,6 +1,5 @@
-package com.example.gymcrmspringsecurity.demo;
+package com.example.gymcrmspringsecurity.controller;
 
-import io.swagger.v3.oas.annotations.Hidden;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -8,13 +7,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/v1/demo-controller")
-@Hidden
-public class DemoController {
+@RequestMapping("/health-controller")
+public class HealthController {
 
-    @GetMapping
+    @GetMapping("/secure")
     public ResponseEntity<String> sayHello() {
         return ResponseEntity.ok("Hello from secured endpoint");
     }
 
+    @GetMapping ("/unsecure")
+    public ResponseEntity<String> checkMicroserviceWithoutJWT() {
+        return ResponseEntity.ok("Check unsecure endpoint");
+    }
 }
