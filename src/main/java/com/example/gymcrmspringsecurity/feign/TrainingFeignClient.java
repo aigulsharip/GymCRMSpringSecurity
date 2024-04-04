@@ -10,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
-@FeignClient(name = "training-feign-client", url = "${training.feign.client.url}")
+//@FeignClient(name = "training-feign-client", url = "${training.feign.client.url}")
+@FeignClient(name = "trainer-gym-microservice")
 public interface TrainingFeignClient {
 
     @GetMapping("/trainings/status-check")
