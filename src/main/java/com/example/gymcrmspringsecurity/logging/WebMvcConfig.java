@@ -21,7 +21,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/trainees/**")
                 .addPathPatterns("/trainers/**")
                 .addPathPatterns("/training-types/**")
-                .addPathPatterns("/trainings/**");
+                .addPathPatterns("/trainings/**")
+                .addPathPatterns("/trainings-feign/**");
     }
 }
 
