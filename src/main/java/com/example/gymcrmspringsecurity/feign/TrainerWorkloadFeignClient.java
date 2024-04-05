@@ -11,11 +11,14 @@ import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 
 //@FeignClient(name = "training-feign-client", url = "${training.feign.client.url}")
-@FeignClient(name = "trainer-gym-microservice")
-public interface TrainingFeignClient {
+@FeignClient(value = "trainer-gym-microservice", fallback = TrainerWorkloadFallback.class)
+public interface TrainerWorkloadFeignClient {
 
     @GetMapping("/trainings/status-check")
     ResponseEntity<String> sayHello();
+
+    @GetMapping("/trainings/message")
+    String displayMessage();
 
     @GetMapping("/trainings/trainer/workload")
     ResponseEntity<List<TrainerWorkload>> getAllTrainerWorkloads();

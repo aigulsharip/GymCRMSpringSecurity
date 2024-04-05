@@ -1,8 +1,9 @@
 package com.example.gymcrmspringsecurity.controller;
 
+import com.example.gymcrmspringsecurity.entity.feign.StatusLog;
 import com.example.gymcrmspringsecurity.entity.feign.TrainerSummary;
 import com.example.gymcrmspringsecurity.entity.feign.TrainerWorkload;
-import com.example.gymcrmspringsecurity.feign.TrainingFeignClient;
+import com.example.gymcrmspringsecurity.feign.TrainerWorkloadFeignClient;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
@@ -15,7 +16,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 public class TrainerWorkloadFeignController {
-    private final TrainingFeignClient trainingFeignClient;
+    private final TrainerWorkloadFeignClient trainingFeignClient;
 
 
     @GetMapping("/status-check")
@@ -23,6 +24,12 @@ public class TrainerWorkloadFeignController {
         return trainingFeignClient.sayHello();
     }
 
+    @GetMapping("/message")
+    public StatusLog displayMessage () {
+        StatusLog statusLog = new StatusLog();
+        statusLog.setMessage(trainingFeignClient.displayMessage());
+        return statusLog;
+    }
 
     @GetMapping("/trainer/workload")
     public ResponseEntity<List<TrainerWorkload>> getAllTrainerWorkloads() {
