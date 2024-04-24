@@ -1,10 +1,11 @@
-package com.example.gymcrmspringsecurity.activemq;
+package com.example.gymcrmspringsecurity.activemq.jms_service;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;
 
 @Component
 public class Receiver {
+
 
     @JmsListener(destination = "order-queue")
     public void receiveMessage(String order){

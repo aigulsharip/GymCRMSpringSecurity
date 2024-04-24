@@ -1,6 +1,8 @@
 package com.example.gymcrmspringsecurity.activemq;
 
 
+import com.example.gymcrmspringsecurity.activemq.jms_service.Receiver;
+import com.example.gymcrmspringsecurity.activemq.jms_service.Sender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

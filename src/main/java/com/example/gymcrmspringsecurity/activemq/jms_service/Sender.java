@@ -1,4 +1,4 @@
-package com.example.gymcrmspringsecurity.activemq;
+package com.example.gymcrmspringsecurity.activemq.jms_service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
