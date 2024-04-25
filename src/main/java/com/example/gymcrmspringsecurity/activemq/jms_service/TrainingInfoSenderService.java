@@ -1,15 +1,15 @@
 package com.example.gymcrmspringsecurity.activemq.jms_service;
 
-import com.example.gymcrmspringsecurity.activemq.pojos.BookOrder;
+import dto.TrainingInfo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.jms.support.converter.MessageConverter;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BookOrderService {
+public class TrainingInfoSenderService {
 
-    private static final String BOOK_QUEUE = "book.order.queue";
+    private static final String TRAINING_QUEUE = "training.info.active.queue";
 
     @Autowired
     private JmsTemplate jmsTemplate;
@@ -17,10 +17,10 @@ public class BookOrderService {
     private MessageConverter jacksonJmsMessageConverter;
 
 
-    public void send(BookOrder bookOrder){
+    public void send(TrainingInfo trainingInfo){
         jmsTemplate.setMessageConverter(jacksonJmsMessageConverter);
-        jmsTemplate.convertAndSend(BOOK_QUEUE, bookOrder, message -> {
-            message.setStringProperty("_type", BookOrder.class.getName());
+        jmsTemplate.convertAndSend(TRAINING_QUEUE, trainingInfo, message -> {
+            message.setStringProperty("_type", TrainingInfo.class.getName());
             return message;
         });
     }

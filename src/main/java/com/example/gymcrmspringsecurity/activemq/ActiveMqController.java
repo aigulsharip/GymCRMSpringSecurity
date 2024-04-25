@@ -1,14 +1,17 @@
 package com.example.gymcrmspringsecurity.activemq;
 
 
-import com.example.gymcrmspringsecurity.activemq.jms_service.BookOrderService;
-import com.example.gymcrmspringsecurity.activemq.jms_service.Sender;
-import com.example.gymcrmspringsecurity.activemq.pojos.BookOrder;
+import com.example.gymcrmspringsecurity.activemq.jms_service.TrainingInfoSenderService;
+import com.example.gymcrmspringsecurity.activemq.jms_service.simple.Sender;
+import dto.TrainingInfo;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -19,7 +22,7 @@ public class ActiveMqController {
 
 
     @Autowired
-    private BookOrderService bookOrderService;
+    private TrainingInfoSenderService trainingInfoSenderService;
 
 
     @PostMapping(value = "/send")
@@ -32,39 +35,16 @@ public class ActiveMqController {
         }
     }
 
-    @PostMapping(value = "/sendBook")
-    public ResponseEntity<String> sendBookOrder(@RequestBody BookOrder bookOrder) {
+    @PostMapping(value = "/sendTrainingInfo")
+    public ResponseEntity<String> sendTrainingInfo(@RequestBody TrainingInfo trainingInfo) {
         try {
-            bookOrderService.send(bookOrder);
-            System.out.println("Order sent to warehouse for bookId = " + bookOrder.getBookId() + " from customerId = " + bookOrder.getCustomerId() + " successfully processed!");
-            return new ResponseEntity<>("Message send to ActiveMQ: " + bookOrder, HttpStatus.OK);
+            trainingInfoSenderService.send(trainingInfo);
+            System.out.println("Created training send to CRM system for trainer = " + trainingInfo.getTrainerName() + " for trainee = " + trainingInfo.getTraineeName() + " successfully processed!");
+            return new ResponseEntity<>("Message send to ActiveMQ: " + trainingInfo, HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<>("Failed to send message: " + e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    /*
-
-    @GetMapping("/order/{customerId}/{bookId}/")
-    public ResponseEntity<String> processOrder(@PathVariable("customerId") String customerId,
-                                             @PathVariable("bookId") String bookId )  {
-        System.out.println("check endpoint");
-        try {
-            BookOrder bookOrder = new BookOrder();
-            bookOrder.setBookOrderId(bookId);
-            bookOrder.setCustomerId(customerId);
-            bookOrderService.send(bookOrder);
-            System.out.println("Order sent to warehouse for bookId = " + bookId + " from customerId = " + customerId + " successfully processed!");
-            return new ResponseEntity<>("Message send to ActiveMQ: " + bookOrder, HttpStatus.OK);
-        } catch (Exception exception) {
-            return new ResponseEntity<>("Failed to send message: " + exception.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
-    }
-
-     */
-
-
 
 
 }

@@ -1,4 +1,4 @@
-package com.example.gymcrmspringsecurity.activemq.jms_service;
+package com.example.gymcrmspringsecurity.activemq.jms_service.simple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jms.core.JmsTemplate;
@@ -10,7 +10,7 @@ public class Sender {
     @Autowired
     JmsTemplate jmsTemplate;
 
-    public void sendMessage(String destination, String message){
+    public void sendMessage(String destination, String message) {
         jmsTemplate.convertAndSend(destination, message);
     }
 }
