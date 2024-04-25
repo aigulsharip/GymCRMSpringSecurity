@@ -1,26 +1,17 @@
 package com.example.gymcrmspringsecurity.activemq.pojos;
 
-public class BookOrder {
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-    public BookOrder(String bookOrderId, Book book, Customer customer) {
-        this.bookOrderId = bookOrderId;
-        this.book = book;
-        this.customer = customer;
-    }
+import java.io.Serializable;
 
-    private final String bookOrderId;
-    private final Book book;
-    private final Customer customer;
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+public class BookOrder implements Serializable {
+    private String bookId;
+    private String  customerId;
 
-    public String getBookOrderId() {
-        return bookOrderId;
-    }
 
-    public Book getBook() {
-        return book;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
 }
