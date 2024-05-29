@@ -1,11 +1,13 @@
 package com.example.gymcrmspringsecurity.mongodb.controller;
 
-import com.example.gymcrmspringsecurity.mongodb.service.TrainerTrainingSummaryService;
+import com.example.gymcrmspringsecurity.mongodb.dto.TrainerTrainingSummary;
 import com.example.gymcrmspringsecurity.mongodb.dto.TrainingEvent;
+import com.example.gymcrmspringsecurity.mongodb.service.TrainerTrainingSummaryService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController

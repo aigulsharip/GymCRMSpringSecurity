@@ -1,10 +1,14 @@
 package com.example.gymcrmspringsecurity.mongodb.service;
 
-import com.example.gymcrmspringsecurity.mongodb.repository.TrainerTrainingSummaryRepository;
+import com.example.gymcrmspringsecurity.mongodb.dto.MonthSummary;
+import com.example.gymcrmspringsecurity.mongodb.dto.TrainerTrainingSummary;
 import com.example.gymcrmspringsecurity.mongodb.dto.TrainingEvent;
+import com.example.gymcrmspringsecurity.mongodb.dto.YearSummary;
+import com.example.gymcrmspringsecurity.mongodb.repository.TrainerTrainingSummaryRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
