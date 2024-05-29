@@ -1,4 +1,4 @@
-package com.example.gymcrmspringsecurity.mongodb;
+package com.example.gymcrmspringsecurity.mongodb.repository;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 import java.util.Optional;

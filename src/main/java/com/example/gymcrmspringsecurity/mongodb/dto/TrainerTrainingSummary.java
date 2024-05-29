@@ -1,4 +1,4 @@
-package com.example.gymcrmspringsecurity.mongodb;
+package com.example.gymcrmspringsecurity.mongodb.dto;
 
 import lombok.Data;
 import org.springframework.data.annotation.Id;
@@ -13,18 +13,6 @@ public class TrainerTrainingSummary {
     private String username;
     private String firstName;
     private String lastName;
-    private String status;
+    private boolean trainerStatus;
     private List<YearSummary> years;
-}
-
-@Data
-class YearSummary {
-    private int year;
-    private List<MonthSummary> months;
-}
-
-@Data
-class MonthSummary {
-    private int month;
-    private int trainingSummaryDuration;
 }

@@ -22,7 +22,8 @@ public class WebMvcConfig implements WebMvcConfigurer {
                 .addPathPatterns("/trainers/**")
                 .addPathPatterns("/training-types/**")
                 .addPathPatterns("/trainings/**")
-                .addPathPatterns("/trainings-feign/**");
+                .addPathPatterns("/trainings-feign/**")
+                .addPathPatterns("/api/trainers-summary");
     }
 }
 
