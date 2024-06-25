@@ -23,6 +23,11 @@ public class TrainerWorkloadFallback  implements TrainerWorkloadFeignClient{
 
     }
 
+    @Override
+    public ResponseEntity<TrainerWorkload> getWorkloadById(Long id) {
+        return null;
+    }
+
     public ResponseEntity<String> updateWorkload(TrainerWorkload request) {
         return ResponseEntity.ok("Training Microservice is down, trainer's workload not updated");
     }

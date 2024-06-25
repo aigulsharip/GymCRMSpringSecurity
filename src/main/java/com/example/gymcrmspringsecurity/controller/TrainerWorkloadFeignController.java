@@ -47,6 +47,23 @@ public class TrainerWorkloadFeignController {
         return ResponseEntity.ok("Workload updated successfully");
     }
 
+    @GetMapping("/trainer/workload/{id}")
+    public ResponseEntity<TrainerWorkload> getWorkloadById(@PathVariable Long id) {
+        log.info("Received request to get trainer workload with ID: {}", id);
+
+        ResponseEntity<TrainerWorkload> response = trainingFeignClient.getWorkloadById(id);
+
+        if (response.getStatusCode().is2xxSuccessful()) {
+            TrainerWorkload workload = response.getBody();
+            log.info("Trainer workload found with ID: {}", id);
+            return ResponseEntity.ok().body(workload);
+        } else {
+            log.error("Trainer workload with ID: {} not found", id);
+            return ResponseEntity.notFound().build();
+        }
+    }
+
+
 
     @GetMapping("/monthly")
     public ResponseEntity<List<TrainerSummary>> getMonthlySummaries() {
